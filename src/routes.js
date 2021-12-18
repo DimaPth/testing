@@ -5,6 +5,7 @@ import GitRepo from "./components/gitRepo/GitRepo";
 export const routes = [
   {
     path: '/',
+    exact: true,
     component: <GitContaiter />,
   },
   {
