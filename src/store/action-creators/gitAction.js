@@ -4,6 +4,7 @@ import { fetchRepos, fetchReposError, fetchReposSuccess } from "../reducers/gitR
 
 export const getGitRepos = (search = 'angular') => {
   return async(dispatch) => {
+    if(!search) dispatch(fetchReposSuccess([]))
     try {
       dispatch(fetchRepos());
       const response = await axios.get("https://api.github.com/search/repositories", {
@@ -13,7 +14,7 @@ export const getGitRepos = (search = 'angular') => {
       })
       dispatch(fetchReposSuccess(response.data.items));
     } catch(e) {
-      dispatch(fetchReposError('something gone wrong'));
+      dispatch(fetchReposError('something gone wrong')); 
     }
   }
 }

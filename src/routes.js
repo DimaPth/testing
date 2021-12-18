@@ -1,9 +1,10 @@
+import GitContaiter from "./components/gitContainer/GitContaiter";
 
 
 export const routes = [
   {
     path: '/',
-    component: 'Contaiter',
+    component: <GitContaiter />,
   },
   {
     path: '/:id',
