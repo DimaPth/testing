@@ -6,6 +6,7 @@ const GitRepo = () => {
   const { gitRepos } = useSelector((state) => state.git);
   const { id } = useParams();
   const filteredRepo = gitRepos.find((item) => item.id === +id);
+  console.log(filteredRepo);
   return (
     <div>
       <h3>{filteredRepo.name}</h3>
@@ -13,6 +14,7 @@ const GitRepo = () => {
       <div>created at: {filteredRepo.created_at}</div>
       <div>language: {filteredRepo.language}</div>
       <div>watchers: {filteredRepo.watchers}</div>
+      <div>visibility: {filteredRepo.visibility}</div>
     </div>
   );
 };

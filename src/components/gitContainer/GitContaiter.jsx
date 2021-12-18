@@ -6,13 +6,14 @@ import { getGitRepos } from "../../store/action-creators/gitAction";
 
 const GitContaiter = () => {
   const [search, setSearch] = useState("");
+  const [filterBy, setFilterBy] = useState("");
   const { gitRepos, isLoading } = useSelector((state) => state.git);
   const debouncedSearch = useDebounce(search, 500);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getGitRepos(debouncedSearch));
-  }, [debouncedSearch]);
+    dispatch(getGitRepos(debouncedSearch, filterBy));
+  }, [debouncedSearch, filterBy]);
 
   return (
     <div>
@@ -21,6 +22,14 @@ const GitContaiter = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <div style={{ margin: "15px 0" }}>
+        filter by:&nbsp;
+        <select onChange={(e) => setFilterBy(e.target.value)}>
+          <option value="">best match</option>
+          <option value="stars">stars</option>
+          <option value="updated">updated</option>
+        </select>
+      </div>
       <div>
         {isLoading ? (
           <h2>loading...</h2>
@@ -39,7 +48,7 @@ const GitContaiter = () => {
                   }}
                 >
                   <span>{repo.name}</span>
-                  <span>id: {repo.id}</span>
+                  <span>updated at: {repo.updated_at}</span>
                 </div>
               </NavLink>
             );
