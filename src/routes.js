@@ -1,4 +1,5 @@
 import GitContaiter from "./components/gitContainer/GitContaiter";
+import GitRepo from "./components/gitRepo/GitRepo";
 
 
 export const routes = [
@@ -8,6 +9,6 @@ export const routes = [
   },
   {
     path: '/:id',
-    component: 'Item',
+    component: <GitRepo />,
   }
 ]

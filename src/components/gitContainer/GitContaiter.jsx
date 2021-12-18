@@ -30,13 +30,16 @@ const GitContaiter = () => {
               <NavLink key={repo.id} to={`/${repo.id}`}>
                 <div
                   style={{
+                    display: "flex",
+                    justifyContent: "space-between",
                     border: "1px solid teal",
                     marginTop: "5px",
                     padding: "5px",
                     cursor: "pointer",
                   }}
                 >
-                  {repo.name}
+                  <span>{repo.name}</span>
+                  <span>id: {repo.id}</span>
                 </div>
               </NavLink>
             );
