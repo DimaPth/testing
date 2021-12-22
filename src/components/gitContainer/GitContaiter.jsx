@@ -14,7 +14,6 @@ const GitContaiter = () => {
   useEffect(() => {
     dispatch(getGitRepos(debouncedSearch, filterBy));
   }, [debouncedSearch, filterBy]);
-
   return (
     <div>
       <input
@@ -36,7 +35,7 @@ const GitContaiter = () => {
         ) : (
           gitRepos.map((repo) => {
             return (
-              <NavLink key={repo.id} to={`/${repo.id}`}>
+              <NavLink key={repo.id} to={`/${repo.owner.login}/${repo.name}`}>
                 <div
                   style={{
                     display: "flex",

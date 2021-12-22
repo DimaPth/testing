@@ -9,7 +9,7 @@ export const routes = [
     component: <GitContaiter />,
   },
   {
-    path: '/:id',
+    path: '/:owner/:repo',
     component: <GitRepo />,
   }
 ]

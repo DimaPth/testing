@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getOneGitRepo } from "../../store/action-creators/gitOneRepoAction";
+import "./GitRepo.css";
 
 const GitRepo = () => {
-  const { gitRepos } = useSelector((state) => state.git);
-  const { id } = useParams();
-  const filteredRepo = gitRepos.find((item) => item.id === +id);
-  console.log(filteredRepo);
+  const { owner, repo } = useParams();
+  const { gitOneRepo, isLoading } = useSelector((state) => state.gitOneRepo);
+  const disptach = useDispatch();
+  useEffect(() => {
+    disptach(getOneGitRepo(owner, repo));
+  }, []);
+  console.log(gitOneRepo);
+  if (isLoading) return <h2>Loading...</h2>;
   return (
     <div>
-      <h3>{filteredRepo.name}</h3>
-      <div>id: {filteredRepo.id}</div>
-      <div>created at: {filteredRepo.created_at}</div>
-      <div>language: {filteredRepo.language}</div>
-      <div>watchers: {filteredRepo.watchers}</div>
-      <div>visibility: {filteredRepo.visibility}</div>
+      <img src={gitOneRepo?.owner?.avatar_url} alt="avatar" width="100px" />
+      <h2>{gitOneRepo?.name}</h2>
+      <p>"{gitOneRepo?.description}"</p>
+      <div className="repo-info">
+        <span>Language: </span>
+        <span>{gitOneRepo?.language}</span>
+      </div>
+      <div className="repo-info">
+        <span>Created at: </span>
+        <span>{gitOneRepo?.created_at}</span>
+      </div>
+      <div className="repo-info">
+        <span>Updated at: </span>
+        <span>{gitOneRepo?.updated_at}</span>
+      </div>
+      <div className="repo-info">
+        <span>Pushed at: </span>
+        <span>{gitOneRepo?.pushed_at}</span>
+      </div>
     </div>
   );
 };
