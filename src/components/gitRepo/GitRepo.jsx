@@ -12,7 +12,6 @@ const GitRepo = () => {
   useEffect(() => {
     disptach(getOneGitRepo(owner, repo));
   }, []);
-  console.log(gitOneRepo);
   if (isLoading) return <h2>Loading...</h2>;
   return (
     <div>
