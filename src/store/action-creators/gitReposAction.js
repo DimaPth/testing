@@ -1,5 +1,5 @@
 import axios from "axios";
-import { fetchRepos, fetchReposError, fetchReposSuccess } from "../reducers/gitReducer";
+import { fetchRepos, fetchReposError, fetchReposSuccess } from "../reducers/gitReposReducer";
 
 
 export const getGitRepos = (search, sort) => {

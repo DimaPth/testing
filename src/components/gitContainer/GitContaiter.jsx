@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import useDebounce from "../../hooks/useDebounce";
-import { getGitRepos } from "../../store/action-creators/gitAction";
+import { getGitRepos } from "../../store/action-creators/gitReposAction";
 
 const GitContaiter = () => {
   const [search, setSearch] = useState("");
