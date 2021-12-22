@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
+import { gitOneRepoReducer } from "./gitOneRepoReducer";
 import { gitReposReducer } from "./gitReposReducer";
 
 
 export const rootReducer = combineReducers({
-  git: gitReposReducer,
+  gitRepos: gitReposReducer,
+  gitOneRepo: gitOneRepoReducer,
 })

@@ -7,7 +7,7 @@ import { getGitRepos } from "../../store/action-creators/gitReposAction";
 const GitContaiter = () => {
   const [search, setSearch] = useState("");
   const [filterBy, setFilterBy] = useState("");
-  const { gitRepos, isLoading } = useSelector((state) => state.git);
+  const { gitRepos, isLoading } = useSelector((state) => state.gitRepos);
   const debouncedSearch = useDebounce(search, 500);
   const dispatch = useDispatch();
 
